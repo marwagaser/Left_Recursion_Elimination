@@ -84,7 +84,6 @@ public class left_elimination {
 	public static String LRE(String str) {
 		Map<String, ArrayList<String>> map = new LinkedHashMap<String, ArrayList<String>>();
 		HashMap<String, ArrayList<String>> hmap = new LinkedHashMap<String, ArrayList<String>>();
-		// str.matches("-?(0|[1-9]\\d*)");
 		String[] CFG_vars = splitString(str, ";");
 		for (int i = 0; i < CFG_vars.length; i++) {
 			ArrayList<String> arrList = new ArrayList<String>();
@@ -108,14 +107,13 @@ public class left_elimination {
 		for (String key1 : keysx) {
 			answer += key1 + "," + map.get(key1).toString().replace("[", "").replace("]", "") + ";";
 		}
+		answer = answer.replaceAll("\\s","");
 		Set<String> keysx1 = hmap.keySet();
 		for (String key1 : keysx1) {
-			answer += key1 + "," + hmap.get(key1).toString().replace("[", "").replace("]", "") + ",;";
+			answer += key1 + "," + hmap.get(key1).toString().replace("[", "").replace("]", "") + ", ;";
 		}
 		answer = answer.substring(0, answer.length() - 1);
-		answer = answer.replaceAll("\\s","");
 		return answer;
-
 	}
 
 	public static void main(String[] args) {
